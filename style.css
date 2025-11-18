@@ -1,189 +1,132 @@
-/* style.css
-    Este arquivo define o visual da sua página "Vivências do Gutão".
-*/
-
-/* --- Variáveis de Cor (Tema Verde e Branco) --- */
-
+/* --- Variáveis de Cor (Paleta) --- */
 :root {
-    --verde-principal: #388e3c; /* Um verde mais escuro e vibrante para destaque */
-    --verde-claro: #f1f8e9; /* Um verde bem claro para o fundo da página */
-    --texto-corpo: #212121; /* Preto quase absoluto para texto principal */
-    --texto-secundario: #757575; /* Cinza para texto secundário */
-    --fundo-card: #ffffff; /* Branco para o fundo dos cards */
-    --cor-borda: #c8e6c9; /* Um verde claro/acinzentado para bordas e divisores */
+    --cor-bg: #f4f4f4;             /* Fundo (Branco suave) */
+    --cor-card: #ffffff;          /* Cor dos cartões (Branco puro) */
+    --cor-texto: #333333;         /* Texto principal */
+    --cor-verde-principal: #28a745; /* Verde moderno */
+    --cor-verde-escuro: #006400;    /* Verde escuro para detalhes */
 }
-/* O bloco de variáveis acima estava faltando e o '}' anterior foi removido */
 
-/* --- Estilos Globais --- */
-body {
-    font-family: "Inter", sans-serif;
-    background-color: var(--verde-claro);
-    color: var(--texto-corpo);
+/* --- Reset Básico e Estilos Globais --- */
+* {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 24px;
-}
-
-/* --- Cabeçalho --- */
-.cabecalho {
-    background-color: var(--verde-principal);
-    color: var(--fundo-card);
-    padding: 32px 0;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.cabecalho h1 {
-    font-size: 2.5rem; /* 40px */
-    font-weight: 800;
-    margin: 0 0 4px 0;
-}
-
-.cabecalho p {
-    font-size: 1.125rem; /* 18px */
-    font-weight: 400;
-    margin: 0;
-    opacity: 0.9;
-}
-
-/* --- Layout Principal (Grid) --- */
-.grid-colunas {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 coluna por padrão (mobile) */
-    gap: 24px;
-    margin-top: 40px;
-}
-
-/* Media Query para telas maiores (Desktop) */
-@media (min-width: 1024px) {
-    .grid-colunas {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas em desktop */
-    }
-}
-
-/* --- Estilo dos Cards (Existentes) --- */
-.card {
-    background-color: var(--fundo-card);
-    border-radius: 12px;
-    padding: 24px;
-    border-top: 4px solid var(--verde-principal);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    transform: translateY(-5px);
-}
-
-.card-centro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.card-titulo-verde {
-    font-size: 1.75rem; /* 28px */
-    font-weight: 700;
-    color: var(--verde-principal);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.card-titulo-verde svg {
-    width: 24px;
-    height: 24px;
-}
-
-.card-titulo-preto {
-    font-size: 1.75rem; /* 28px */
-    font-weight: 700;
-    color: var(--texto-corpo);
-    margin-top: 8px;
-}
-
-.card-texto {
-    color: var(--texto-secundario);
-    margin-bottom: 16px;
-}
-
-.card-texto strong {
-    color: var(--texto-corpo);
-    font-weight: 700;
-}
-
-/* --- Seção #sobre --- */
-.foto-perfil-container {
-    width: 112px; /* 7rem */
-    height: 112px;
-    border-radius: 50%;
-    border: 4px solid var(--verde-principal);
-    background-color: var(--cor-borda);
-    overflow: hidden;
-    margin-bottom: 12px;
-}
-
-.foto-perfil-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Garante que a foto cubra o círculo */
-}
-
-.lista-detalhes {
-    list-style: disc;
-    padding-left: 20px;
-    color: var(--texto-secundario);
-}
-
-/* --- Seção #amigos --- */
-.grid-fotos-container {
-    width: 100%;
-    padding: 8px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    border: 2px dashed var(--cor-borda);
-    margin-bottom: 24px;
     box-sizing: border-box;
 }
 
-.grid-fotos {
+html {
+    scroll-behavior: smooth; /* Rolagem suave */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cor-bg);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: var(--cor-verde-escuro); /* Detalhe em verde escuro */
+}
+
+main {
+    width: 100%;
+    max-width: 900px; /* Limita a largura para melhor leitura */
+}
+
+/* --- Estilo dos "Cards" --- */
+.card, .card-footer {
+    background-color: var(--cor-card);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+
+    /* Configuração para a animação JS */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+}
+
+/* Estado visível (controlado pelo JS) */
+.card.visible, .card-footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Efeito sutil ao passar o mouse */
+}
+
+.card h2 {
+    color: var(--cor-verde-principal); /* Títulos em verde */
+    border-bottom: 2px solid var(--cor-verde-escuro); /* Detalhe em verde escuro */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.card p {
+    margin-bottom: 15px;
+}
+
+/* --- Seção 2: Galeria de Fotos --- */
+.gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    /* 2 colunas no desktop */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.foto-amigo-container {
+/* ESTILO NOVO PARA AS IMAGENS */
+.gallery-photo {
     width: 100%;
-    padding-top: 100%; /* Cria um quadrado perfeito (aspect-ratio 1:1) */
-    position: relative;
-    background-color: var(--cor-borda);
-    border-radius: 6px;
-    overflow: hidden;
+    height: 250px; /* Espaço grande para a foto */
+    object-fit: cover; /* Faz a imagem cobrir o espaço sem distorcer */
+    border-radius: 8px;
 }
 
-.foto-amigo-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* --- Seção 3: Corinthians --- */
+#corinthians .emphasis {
+    font-weight: 700; /* 700 é 'bold' para a fonte Montserrat */
+    font-size: 1.1rem;
+    color: var(--cor-verde-escuro);
 }
 
-/* --- Seção #corinthians --- */
-.logo-corinthians {
-    width: 80px;
-    height: auto;
-    display: block;
-    margin: 0 auto 16px auto;
+/* --- Rodapé --- */
+.card-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* --- Responsividade (para Celular) --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    /* As fotos ficarão uma em cima da outra no celular */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    /* ESTILO NOVO PARA AS IMAGENS NO CELULAR */
+    .gallery-photo {
+        height: 200px; /* Altura menor no celular */
+    }
 }
